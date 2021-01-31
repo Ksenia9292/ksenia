@@ -1,0 +1,49 @@
+
+
+// Variables
+@import '_parts/variables';
+
+@import '_parts/main';
+@import '_parts/fonts';
+
+
+@import "components/header/header";
+@import "components/footer/footer";
+
+@import "components/shared/demiliner";
+@import "components/shared/pagination_item_amount";
+@import "components/shared/pagination";
+@import "components/shared/questions_form";
+@import "components/shared/map";
+@import "components/shared/feedback_redirect_page";
+
+@import "components/home/banners";
+@import "components/home/feed_category";
+@import "components/home/quick_order";
+@import "components/home/blog_banner";
+
+@import "components/about/about";
+
+@import "components/cart/cart";
+@import "components/cart/cart_table";
+@import "components/cart/cart_form";
+@import "components/cart/cart_after_order";
+
+@import "components/product/product";
+@import "components/product/product_card";
+@import "components/product/offered_goods";
+
+@import "components/products/products_distributor";
+@import "components/products/products_kalinka";
+@import "components/products/product_card";
+@import "components/products/filters";
+@import "components/products/product_list";
+
+@import "components/contacts/contacts";
+@import "components/contacts/agency_card";
+
+
+
+
+
+

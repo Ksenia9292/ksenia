@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; IE=edge; charset=utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css">
+    <script src="main.js"></script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
+        integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"
+        integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+        integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
+        crossorigin="anonymous"></script>
+
+
+
+    <title>Калінка</title>
+
+
+</head>
+
+<body>
+
+    <header class="main-navigation mb-2" header-main-navigation>
+        <nav class="navbar navbar-expand-lg pt-3 pb-1 pl-1 pr-1 mb-4 mt-3 mt-lg-0 mb-lg-0 position-relative">
+            <img class="d-block d-lg-none position-absolute logo-image-mobile"
+                src='/img/generalImages/02_Short_Logo.png'>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbarHeaderToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger"></div>
+            </button>
+            <div class="collapse navbar-collapse w-100 navbarHeaderToggler">
+                <ul class="navbar-nav nav-primary">
+                    <li class="nav-item"><a class="nav-link" href="/">Головна</a></li>
+                    <li class="nav-item dropdown">
+                        <a id="dropdownMenuButton" class="nav-link cursor-pointer" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Продукція</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li class="submenu dropdown-item position-relative">
+                                <a href="/products_kalinka?category=%5B1%5D">
+                                    Категория1
+                                </a>
+                            </li>
+                            <li class="submenu dropdown-item">
+                                <a class="dropdown-item" href="/products_distributor">Інші товари</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/about">Про нас</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contacts">Контакти</a></li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-2 navbarHeaderToggler">
+                <ul class="navbar-nav ml-auto nav-secondary">
+                    <li class="nav-item d-none">
+                        <img src="/img/icons/search.svg" alt="">
+                    </li>
+                    <li class="nav-item">
+                        <a href="/cart" class="header-cart position-relative">
+                            <img src="/img/icons/cart.svg" alt="">
+                            <div class="cart-counter"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tel:+380444807592">+380444807592</a>
+                    </li>
+                    <li class="nav-item mr-0">
+                        <p class="address-text ml-2 mb-0 font-weight-bold">
+                            Пров. Чорновола, 3, с.Софіївська Борщагівка,
+                            Києво-Святошинський р-н, Київська обл.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- demiliner -->
+        <div class="position-relative d-none d-lg-block" style="top:-5px;">
+            <div class="demiliner">
+                <div class="line">
+                </div>
+                <img src="/img/02_Short_Logo.png" alt="">
+                <div class="line">
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <script>
+        var cartGlobal = {
+            init() {
+                var $cartCounter = $('header[header-main-navigation] .cart-counter')
+                var storageCart = localStorage.getItem('cart');
+                var storageCartLength = 0
+                if (storageCart) {
+                    storageCartLength = JSON.parse(storageCart).length
+                }
+                if (!storageCart) {
+                    $cartCounter.hide()
+                    localStorage.setItem('cart', '[]')
+                } else if (storageCartLength) {
+                    $cartCounter.text(storageCartLength)
+                    $cartCounter.show()
+                }
+                $(document).on('cartChange', function (e, args) {
+                    var storageCart = JSON.parse(localStorage.getItem('cart'));
+                    switch (args.action) {
+                        case 'addItem':
+                            var newItem = true
+                            if (storageCart.length) {
+                                storageCart.forEach(function (item) {
+                                    if (item.itemId === args.itemId) {
+                                        if (args.amount > 1) {
+                                            item.amount = +args.amount
+                                        } else if (args.amount === 1) {
+                                            item.amount = +item.amount + +args.amount
+                                        } else {
+                                            item.amount = 1
+                                        }
+                                        newItem = false
+                                    }
+                                })
+                            }
+                            if (newItem) {
+                                storageCart.push({ itemId: args.itemId, amount: args.amount })
+                            }
+                            localStorage.setItem('cart', JSON.stringify(storageCart))
+                            $cartCounter.text(storageCart.length)
+                            $cartCounter.show()
+                            $.cookie('cart', JSON.stringify(storageCart), { expires: 180, path: "/" })
+                            break;
+                        case 'removeItem':
+
+                            storageCart = storageCart.filter(function (item) {
+                                return item.itemId !== args.itemId
+                            })
+                            localStorage.setItem('cart', JSON.stringify(storageCart))
+                            if (storageCart.length) {
+                                $cartCounter.text(storageCart.length)
+                            } else {
+                                $cartCounter.hide()
+                                if ($('.cart-table') && $('.cart-form')) {
+                                    $('.cart-table').replaceWith('  <div class="d-flex align-items-center justify-content-center" style="min-height: 300px">\n            <h1 class="text-center mt-3 mb-3">Кошик пустий</h1>\n        </div>')
+                                    $('.cart-form').remove()
+                                }
+                            }
+                            $.cookie('cart', JSON.stringify(storageCart), { expires: 180, path: "/" })
+                            break;
+                        case 'clearCart':
+                            $.removeCookie('cart', { path: "/" })
+                            localStorage.setItem('cart', '[]')
+                            break;
+                    }
+                })
+            }
+        }
+        var header = {
+            init() {
+                $('.dropdown-menu .submenu .dropdown-toggler').on('click', function (e) {
+                    if (!$(this).next().hasClass('show')) {
+                        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+                    }
+                    var $subMenu = $(this).next(".dropdown-menu");
+                    $subMenu.toggleClass('show');
+
+
+                    $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+                        $('.dropdown-submenu .show').removeClass("show");
+                    });
+                    return false;
+                });
+            }
+        }
+
+        $(document).ready(function () {
+            cartGlobal.init()
+            header.init()
+
+            quickOrder.init()
+
+            $("footer .scroller").click(function (e) {
+                e.preventDefault()
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
+            });
+        });
+    </script>
+    <!-- flip cards -->
+
+    <section class="feed-category" feed-category>
+        <h2 class="text-center font-weight-bold mb-3">Призначення корму</h2>
+        <nav class="feed-nav container">
+            <ul class="list-unstyled row">
+                <li class="col">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B80%5D">
+                                    <img src="/img/feed/duck-2.svg" alt="Качка">
+                                </a>
+                            </div>
+                            <div class="flip-card-back bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B80%5D">
+                                    <img src="/img/feed/duck.png" style="max-width: 116%; transform: translateX(-20px);"
+                                        alt="Качка">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B77%5D">
+                                    <img src="/img/feed/chicken-2.svg" alt="Курка">
+                                </a>
+                            </div>
+                            <div class="flip-card-back bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B77%5D">
+                                    <img src="/img/feed/chicken.png" alt="Курка">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+                <li class="col">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B78%5D">
+                                    <img src="/img/feed/chicken-3.svg" alt="Курка бройлер">
+                                </a>
+                            </div>
+                            <div class="flip-card-back bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B78%5D">
+                                    <img src="/img/feed/chicken-2.png" alt="Курка бройлер">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B79%5D">
+                                    <img src="/img/feed/cow-2.svg" alt="Корова">
+                                </a>
+                            </div>
+                            <div class="flip-card-back bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B79%5D">
+                                    <img src="/img/feed/cow.png" alt="Корова">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="list-unstyled  row">
+                <li class="col">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B76%5D">
+                                    <img src="/img/feed/pig-2.svg" alt="Свиня">
+                                </a>
+                            </div>
+                            <div class="flip-card-back bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B76%5D">
+                                    <img src="/img/feed/pig.png" alt="Свиня">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B81%5D">
+                                    <img src="/img/feed/quail-2.svg" alt="Перепел">
+                                </a>
+                            </div>
+                            <div class="flip-card-back bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B81%5D">
+                                    <img src="/img/feed/quail.png" alt="Перепел">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B82%5D">
+                                    <img src="/img/feed/turkey-2.svg" alt="Індик">
+                                </a>
+                            </div>
+                            <div class="flip-card-back bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B82%5D">
+                                    <img src="/img/feed/turkey.png" alt="Індик">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B83%5D">
+                                    <img src="/img/feed/rabbit-2.svg" alt="Кролик">
+                                </a>
+                            </div>
+                            <div class="flip-card-back bg-white d-flex align-items-center justify-content-center">
+                                <a href="/products_kalinka?subcategory=%5B83%5D">
+                                    <img src="/img/feed/rabbit.png" alt="Кролик">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="d-flex align-items-center  justify-content-center mb-4">
+            <a href="/products_distributor">
+                <button class="btn text-center font-weight-bold">Інші продукти</button>
+            </a>
+        </div>
+
+    </section>
+    <!-- form -->
+    <section class="quick-order container mb-4" quick-order>
+        <div class="row">
+            <div class="decoration col d-none d-lg-block">
+                <img src="/img/icons/flower.svg" alt="">
+            </div>
+            <div class="col p-3 p-lg-0 d-flex align-items-center justify-content-center flex-column">
+                <h2 class="mb-3 text-center">
+                    Заповніть форму для швидкого замовлення
+                </h2>
+                <form class="needs-validation d-flex flex-column align-items-center w-75 justify-content-center"
+                    id="quick-order-form" novalidate>
+                    <div class="input-group mb-3">
+                        <input id="name" type="text" class="form-control" name="name" placeholder="Ваше ім'я" required
+                            maxlength="50">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input phone type="text" class="form-control" name="phone" placeholder="Номер телефону" required
+                            pattern="((\+38) ?\(?\d{3}\)?[\s\.-]?(\d{7}|\d{3}[\s\.-]\d{2}[\s\.-]\d{2}|\d{3}-\d{4}))">
+                    </div>
+                    <div class="input-group mb-3">
+
+                        <select feed class="form-control" name="feed" required>
+                            <option class="pt-2 pb-2 pl-1 pr-1" value="" selected>Вид корму</option>
+
+                            <option class="pt-2 pb-2 pl-1 pr-1" value="1"> 1</option>
+
+                        </select>
+                    </div>
+                    <input class="btn font-weight-bold" type="submit" value="Відправити" />
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        var quickOrder = {
+            init() {
+                var $form = $('.quick-order[quick-order] form')
+                var form = document.querySelector('.quick-order[quick-order] form')
+                var $name = $form.find('input#name')
+                var $phone = $form.find('input[phone]')
+                var $feed = $form.find('select[feed]')
+                var $submit = $form.find('input[submit]')
+                var currentUrl = window.location.href
+                var token = $('meta[name=csrf-token]').attr('content')
+
+                $form.find('[phone]').mask('+38 (000) 000-00-00')
+
+                $form.submit(function (event) {
+                    event.preventDefault();
+                    $name.val($name.val().trim())
+                    if (form.checkValidity() === false) {
+                        event.stopPropagation();
+                    } else {
+                        $name.attr('disabled', 'disabled')
+                        $phone.attr('disabled', 'disabled')
+                        $feed.attr('disabled', 'disabled')
+                        $submit.attr('disabled', 'disabled')
+                        $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': token } });
+                        $.post({
+                            url: "/shop/feedback/create_feedback",
+                            data: {
+                                client_name: $name.val(),
+                                client_phone: $phone.val(),
+                                from_page: currentUrl,
+                                subcategory: $feed.val(),
+                            },
+                            success: function () {
+                                window.location.href = '/feedback/thanks'
+                            },
+                            complete: function () {
+                                $name.removeAttr('disabled')
+                                $phone.removeAttr('disabled')
+                                $submit.removeAttr('disabled')
+                                $feed.removeAttr('disabled')
+                            }
+                        })
+                    }
+                    form.classList.add('was-validated')
+                })
+            }
+        }
+        // $(document).ready(function () {
+        //     quickOrder.init()
+        // })
+
+    </script>
+    <!-- big banner -->
+
+    <section class="blog-banner mb-4 " blog-banner>
+        <div class="container">
+            <div class="row">
+                <div class="col col-12 col-lg-6 d-flex align-items-center justify-content-center">
+                    <div class=" header-text position-relative">
+
+                        <p class="text-white text-after position-absolute">
+                            <span class="accent-color">В</span>иди <br>
+                            <span>Корму</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col col-12 col-lg-6 d-flex align-items-center justify-content-center flex-column">
+                    <h3 class="p text-white blog-text d-none d-lg-block">
+                        Lorem, ipsum.
+                    </h3>
+                    <div class="d-flex align-items-center justify-content-end align-self-end">
+                        <a href="" class="text-white"></a>
+                        <a href="" class="d-inline-block"><img src="/img/icons/arrowSmall.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- footer -->
+
+    <footer class="desktop-footer" footer>
+        <div class="navigation-block-wrapper">
+            <div class="navigation-block">
+                <div class="container">
+                    <div class="row">
+                        <div
+                            class="col col-12 col-lg-3 d-flex align-items-center justify-content-center justify-content-lg-start">
+                            <nav class="footer-nav">
+                                <ul class="navbar-nav nav-secondary text-center text-lg-left">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light font-weight-bold" href="/">Головна</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light font-weight-bold"
+                                            href=".img/products_kalinka">Продукція</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light font-weight-bold" href="/about">Про нас</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light font-weight-bold" href="/contacts">Контакти</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col col-12 col-lg-3 mt-3 mt-md-0">
+                            <p class="font-weight-bold text-light text-center text-lg-left">Каталог</p>
+                            <nav>
+                                <ul class="list-unstyled text-center text-lg-left">
+
+                                    <li>
+                                        <a class="small" href="/products_kalinka?subcategory=%5B2%5D">Комбикормы и
+                                            концентраты для телят и КРС.</a>
+                                    </li>
+                                    <li>
+                                        <a class="small" href="/products_kalinka?subcategory=%5B2%5D">Комбикормы и
+                                            концентраты для бройлеров.</a>
+                                    </li>
+                                    <li>
+                                        <a class="small" href="/products_kalinka?subcategory=%5B2%5D">Комбикормы и
+                                            концентраты для кроликов</a>
+                                    </li>
+                                    <li>
+                                        <a class="small" href="/products_kalinka?subcategory=%5B2%5D">Комбикормы и
+                                            концентраты для телят и КРС.</a>
+                                    </li>
+                                    <li>
+                                        <a class="small" href="/products_kalinka?subcategory=%5B2%5D">Комбикормы и
+                                            концентраты для телят и КРС.</a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col col-12 col-lg-3 mt-3 mt-md-0">
+                            <p class="font-weight-bold text-light text-center text-lg-left">Клієнтам</p>
+                            <nav>
+                                <ul class="list-unstyled text-center text-lg-left">
+                                    <li><a class="small" href="/products_kalinka">Каталог</a></li>
+                                    <li><a class="small" href="/about">Про нас</a></li>
+                                    <li><a class="small" href="/blog">Блог</a></li>
+                                    <li><a class="small" href="/delivery">Оплата и доставка</a></li>
+                                    <li><a class="small" href="/policy">Политика конфидециальности</a></li>
+
+
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col col-12 col-lg-3 mt-3 mt-md-0">
+                            <p class="font-weight-bold text-light text-center text-lg-left">Контактна інформація</p>
+                            <nav class="d-flex align-items-center justify-content-center">
+                                <ul class="contacts list-unstyled text-left">
+
+                                    <li class="d-flex align-items-center justify-content-start">
+                                        <img src="/img/icons/marker.svg" class="mr-2" alt="marker">
+                                        <span class="address">Пров. Чорновола, 3,
+                                            с.Софіївська Борщагівка,
+                                            Києво-Святошинський р-н, Київська обл.</span>
+
+                                    </li>
+                                    <li class="mt-3 d-flex align-items-center justify-content-start">
+                                        <img src="/img/icons/phoneOutline.svg" class="mr-2" alt="phone">
+                                        <a class="small" href="tel:+380444807592" class="text-left">
+                                            +380444807592
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="container-fluid  form-block d-flex align-items-center justify-content-center flex-column flex-lg-row justify-content-lg-between">
+            <div class="position-relative">
+                <img src="/img/02_Short_Logo.png" alt="Калінка">
+                <p class="m-0 font-weight-bold position-absolute">Комбікорма та добавки</p>
+            </div>
+            <form class="d-flex align-items-center mt-3 mt-lg-0" novalidate>
+                <div class="input-group mr-0 mr-sm-3">
+                    <input email type="email" class="form-control" placeholder="Ваш Email" required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                </div>
+                <input class="btn font-weight-bold " type="submit" value="Відправити" />
+            </form>
+        </div>
+        <div class="scroller cursor-pointer d-flex justify-content-center align-items-center align-items-lg-start">
+            <img class="cursor-pointer" src="/img/icons/arrowTop.svg" alt="">
+        </div>
+        <div class="modal fade" id="toMailchimpModal" tabindex="-1" role="dialog" aria-labelledby="toMailchimpModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body p-3">
+                        <div class="container-fluid p-0">
+                            <h2 class="mb-3 text-center">Дякуемо!</h2>
+                            <div class="content mb-3">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, incidunt.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // $(document).ready(function () {
+        //     $("footer .scroller").click(function (e) {
+        //         e.preventDefault()
+        //         $("html, body").animate({ scrollTop: 0 }, "slow");
+        //         return false;
+        //     });
+        var $form = $('footer form')
+        var form = document.querySelector('footer form')
+        var $email = $form.find('[email]')
+        var $submit = $form.find('[submit]')
+        var token = $('meta[name=csrf-token]').attr('content')
+        var $mailChimpModal = $('footer #toMailchimpModal')
+
+        $form.submit(function (event) {
+            event.preventDefault();
+            if (form.checkValidity() === false) {
+                event.stopPropagation();
+            } else {
+                $email.attr('disabled', 'disabled')
+                $submit.attr('disabled', 'disabled')
+                $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': token } });
+                $.post({
+                    url: "/mailchimp",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify({
+                        user_email: $email.val(),
+                    }),
+                    success: function () {
+                        $email.val('')
+                        $mailChimpModal.modal('show')
+                    },
+                    complete: function () {
+                        $email.removeAttr('disabled')
+                        $submit.removeAttr('disabled')
+                    }
+                })
+            }
+            form.classList.add('was-validated')
+        })
+
+    </script>
+</body>
+
+</html>
